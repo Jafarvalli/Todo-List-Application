@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Event</title>
+
+    <style>
+       body{
+           background-color: black;
+       }
+       h1{
+           text-align: center;
+           color: red;
+           font-size: 50px;
+       }
+       p{
+           text-align: center;
+           color:yellow;
+           font-size: 30px;
+       }
+       input{
+           width: 75%;
+           padding: 20px;
+           font-size: 20px;
+           margin-inline-start: 50px;
+           font-size: 25px;
+           border-radius: 20px;
+       }
+       button{
+           padding: 10px;
+           width: 100px;
+           height: 68px;
+           background-color: aquamarine;
+           font-size: 25px;
+           border-radius: 20px;
+       }
+       li{
+           list-style: none;
+           color: white;
+           font-size: 30px;
+           width: 75%;
+           margin: 10px;
+           padding: 20px;
+           background-color: dodgerblue;
+           border: 1px solid black;
+           border-radius: 10px;
+       }
+    </style>
+</head>
+<body>
+    <h1>TODO LIST</h1>
+    <p>If We Enter Something into the input box that content will be add in the HTML Page in the form of List Items...</p>
+    <div>
+        <input id="a" placeholder="Enter List items...">
+        <button id="btn1" onclick="removeAll()">Delete</button>
+        <ul id="ulist"></ul>
+    </div>
+    <script>
+        const a=document.getElementById('a')
+        const b=document.getElementById('btn1')
+        const c=document.getElementById('ulist')
+
+        a.addEventListener('keypress',myFunction)
+
+        function myFunction(e){
+            if(e.code == 'Enter' && e.target.value !==" "){
+                let z=e.target.value;
+                let item=document.createElement('li'); //<li><label>Hai</label></li>
+                item.innerHTML=`
+                <label>${z}</label>
+              `
+              c.appendChild(item)
+              a.value=" "
+            }
+        }
+
+        function removeAll(){
+            let f=document.getElementsByTagName('ul');
+            f[0].innerHTML=" "
+        }
+    </script>
+</body>
+</html>
